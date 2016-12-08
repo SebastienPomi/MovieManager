@@ -17,21 +17,32 @@ import java.util.List;
 public class Person {
     
     private Long id;
-    private String name;
-    private String producer;
+    private String firstname;
+    private String lastname;
     private List<Movie> movies;
-
+    
+    /**
+     * Constructeur non paramétré de la classe Person
+     * Initialisation de la liste de film
+     */
     public Person() {
         this.movies = new ArrayList<>();
     }
-
-    public Person(Long id, String name, String producer) {
+    
+    /**
+     * Constructeur paramétré de la classe Person
+     * @param id l'id de la personne
+     * @param firstname prénom de la personne
+     * @param lastname  nom de la personne
+     * initialisation de la liste de film de la personne
+     */
+    public Person(Long id, String firstname, String lastname) {
         this.id = id;
-        this.name = name;
-        this.producer = producer;
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.movies = new ArrayList<>();
     }
-
+    
     public Long getId() {
         return id;
     }
@@ -40,20 +51,20 @@ public class Person {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getProducer() {
-        return producer;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setProducer(String producer) {
-        this.producer = producer;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public List<Movie> getMovies() {
@@ -64,12 +75,24 @@ public class Person {
         this.movies = movies;
     }
     
+    /**
+     * Ajouter un film à la liste de la personne et ajouter la personne dans le film
+     * @param movie film à ajouter
+     * @throws UniqueException
+     * @throws NullParameterException 
+     */
     public void addMovie(Movie movie) throws UniqueException, NullParameterException {
+        this.movies.add(movie);
+        movie.addPersonn(this);
         
     }
-    
+    /**
+     * Supprimer un film de la liste de la personne et supprimer la personne du film
+     * @param movie 
+     */
     public void removeMovie(Movie movie){
-        
+        this.movies.remove(movie);
+        movie.removePerson(this);
     }
     
     

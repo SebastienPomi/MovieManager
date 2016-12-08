@@ -15,19 +15,29 @@ import java.util.List;
 public class Movie {
     
     private Long id;
-    private String firstname;
-    private String lastname;
-    private List<Person> persons;
+    private String name;
+    private String producer;
+    private List<Person> people;
 
+    /**
+     * Constructeur non-parametré de la classe Movie
+     * Initialisation de la liste de personnes
+     */
     public Movie() {
-        this.persons = new ArrayList<>();
+        this.people = new ArrayList<>();
     }
-
-    public Movie(Long id, String firstname, String lastname) {
+    /**
+     * Constructeur parametré de la classe Movie
+     * @param id id du film
+     * @param name nom du film
+     * @param producer producteur du film
+     * Initialisation de la liste de personnes
+     */
+    public Movie(Long id, String name, String producer) {
         this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.persons = new ArrayList<>();
+        this.name = name;
+        this.producer = producer;
+        this.people = new ArrayList<>();
     }
 
     public Long getId() {
@@ -38,28 +48,44 @@ public class Movie {
         this.id = id;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getProducer() {
+        return producer;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setProducer(String producer) {
+        this.producer = producer;
     }
 
-    public List<Person> getPersons() {
-        return persons;
+    public List<Person> getPeople() {
+        return people;
     }
 
-    public void setPersons(List<Person> persons) {
-        this.persons = persons;
+    public void setPeople(List<Person> people) {
+        this.people = people;
+    }
+    
+    /**
+     * Ajouter une personne à la liste
+     * @param person personne à ajouter
+     */
+    public void addPersonn(Person person){
+        this.people.add(person);
+    }
+    
+    /**
+     * Supprimer une personne à la liste
+     * @param person personne à supprimer
+     */
+    public void removePerson(Person person){
+        this.people.remove(person);
     }
     
     
