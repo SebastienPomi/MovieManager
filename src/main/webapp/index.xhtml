@@ -12,6 +12,9 @@
     </f:metadata>
     <h:body>
         <ui:composition template="mainTemplate.xhtml">
+            <ui:define name="top">
+                #{msg.home}
+            </ui:define>
             <ui:define name="content">
                 <h1>#{msg.peopleList}</h1>
                 <h:dataTable value="#{indexBean.peopleList}" var="peopleList">
