@@ -2,14 +2,63 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>#{msg.moviemanager}</title>
     </h:head>
+    <f:metadata>
+        <f:viewAction action="#{indexBean.init()}"></f:viewAction>
+    </f:metadata>
     <h:body>
         <ui:composition template="mainTemplate.xhtml">
             <ui:define name="content">
-                #{msg.list}
+                <h1>#{msg.peopleList}</h1>
+                <h:dataTable value="#{indexBean.peopleList}" var="peopleList">
+                    <h:column>
+                        <f:facet name="header">#{msg.id}</f:facet>
+                        <h:link outcome="Person/list.xhtml" value="#{peopleList.id}">
+                            <f:param name="id" value="#{peopleList.id}"/>
+                        </h:link>
+
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">#{msg.firstname}</f:facet>
+                        <h:link outcome="Person/list.xhtml" value="#{peopleList.firstname}">
+                            <f:param name="id" value="#{peopleList.id}"/>
+                        </h:link>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">#{msg.lastname}</f:facet>
+                        <h:link outcome="Person/list.xhtml" value="#{peopleList.lastname}">
+                            <f:param name="id" value="#{peopleList.id}"/>
+                        </h:link>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">#{msg.filmNumber}</f:facet>
+                            #{peopleList.movies.size()}
+                    </h:column>
+                </h:dataTable>
+
+                <h1>#{msg.moviesList}</h1>
+                <h:dataTable value="#{indexBean.moviesList}" var="movieList">
+                    <h:column>
+                        <f:facet name="header">#{msg.id}</f:facet>
+                            #{movieList.id}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">#{msg.movieName}</f:facet>
+                            #{movieList.name}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">#{msg.producer}</f:facet>
+                            #{movieList.producer}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">#{msg.peopleNumber}</f:facet>
+                            #{movieList.people.size()}
+                    </h:column>
+                </h:dataTable>
             </ui:define>
         </ui:composition>
     </h:body>
