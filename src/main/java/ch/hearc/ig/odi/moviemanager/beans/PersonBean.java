@@ -16,11 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -48,7 +46,11 @@ public class PersonBean implements Serializable {
      * Initialise the current Person
      */
     public void initCurrentPerson() {
+        if(currentPersonID == null){
+            currentPerson = new Person();
+        } else {
         currentPerson = services.getPersonWithId(currentPersonID);
+        }
         this.searchMoviesMissing();
     }
 
@@ -103,6 +105,15 @@ public class PersonBean implements Serializable {
             services.addMovieToPerson(currentPerson, movie);
 
         } catch (NullParameterException | UniqueException ex) {
+            Logger.getLogger(PersonBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "list.xhtml?faces-redirect=true&id=" + currentPerson.getId();
+    }
+    
+    public String save(Person person){
+        try {
+            services.savePerson(person);
+        } catch (NullParameterException ex) {
             Logger.getLogger(PersonBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "list.xhtml?faces-redirect=true&id=" + currentPerson.getId();
