@@ -20,7 +20,9 @@
                 <label>#{msg.id} : #{movieBean.currentMovie.id}</label><br/>
                 <label>#{msg.movieName} : #{movieBean.currentMovie.name}</label><br/>
                 <label>#{msg.producer} : #{movieBean.currentMovie.producer}</label><br/>
-                <h:button value="#{msg.edit}"/>
+                <h:button value="#{msg.edit}" outcome="edit.xhtml">
+                    <f:param name="id" value="#{movieBean.currentMovieID}"/>
+                </h:button>
                 <h1>#{msg.personShowMovie}</h1>
 
                 <h:dataTable value="#{movieBean.currentMovie.people}" var="peopleList">
