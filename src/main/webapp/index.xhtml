@@ -47,15 +47,21 @@
                 <h:dataTable value="#{indexBean.moviesList}" var="movieList">
                     <h:column>
                         <f:facet name="header">#{msg.id}</f:facet>
-                            #{movieList.id}
+                        <h:link outcome="movies/details.xhtml" value="#{movieList.id}">
+                            <f:param name="id" value="#{movieList.id}"/>
+                        </h:link>
                     </h:column>
                     <h:column>
                         <f:facet name="header">#{msg.movieName}</f:facet>
-                            #{movieList.name}
+                        <h:link outcome="movies/details.xhtml" value="#{movieList.name}">
+                            <f:param name="id" value="#{movieList.id}"/>
+                        </h:link>
                     </h:column>
                     <h:column>
                         <f:facet name="header">#{msg.producer}</f:facet>
-                            #{movieList.producer}
+                        <h:link outcome="movies/details.xhtml" value="#{movieList.producer}">
+                            <f:param name="id" value="#{movieList.id}"/>
+                        </h:link>
                     </h:column>
                     <h:column>
                         <f:facet name="header">#{msg.peopleNumber}</f:facet>
