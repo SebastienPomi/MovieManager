@@ -20,20 +20,20 @@
                 <h:dataTable value="#{indexBean.peopleList}" var="peopleList">
                     <h:column>
                         <f:facet name="header">#{msg.id}</f:facet>
-                        <h:link outcome="Person/list.xhtml" value="#{peopleList.id}">
+                        <h:link outcome="people/list.xhtml" value="#{peopleList.id}">
                             <f:param name="id" value="#{peopleList.id}"/>
                         </h:link>
 
                     </h:column>
                     <h:column>
                         <f:facet name="header">#{msg.firstname}</f:facet>
-                        <h:link outcome="Person/list.xhtml" value="#{peopleList.firstname}">
+                        <h:link outcome="people/list.xhtml" value="#{peopleList.firstname}">
                             <f:param name="id" value="#{peopleList.id}"/>
                         </h:link>
                     </h:column>
                     <h:column>
                         <f:facet name="header">#{msg.lastname}</f:facet>
-                        <h:link outcome="Person/list.xhtml" value="#{peopleList.lastname}">
+                        <h:link outcome="people/list.xhtml" value="#{peopleList.lastname}">
                             <f:param name="id" value="#{peopleList.id}"/>
                         </h:link>
                     </h:column>
