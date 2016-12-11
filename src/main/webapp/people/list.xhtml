@@ -20,7 +20,7 @@
                 <label>#{msg.id} : #{personBean.currentPerson.id}</label><br/>
                 <label>#{msg.firstname} : #{personBean.currentPerson.firstname}</label><br/>
                 <label>#{msg.lastname} : #{personBean.currentPerson.lastname}</label><br/>
-
+                <h:button value="#{msg.edit}"/>
                 <h1>#{msg.movieListPerson}</h1>
 
                 <h:dataTable value="#{personBean.currentPerson.movies}" var="movieList">
@@ -37,11 +37,8 @@
                             #{movieList.producer}
                     </h:column>
                     <h:column>
-                        #{msg.delete}
-                    </h:column>
-                    <h:column>
                         <h:form>
-                            <h:commandButton value="#{msg.delete}" action="#{personBean.deleteMovie(movies)}" />
+                            <h:commandButton value="#{msg.delete}" action="#{personBean.deleteMovie(movieList)}" />
                         </h:form>
                     </h:column>
                 </h:dataTable>
@@ -53,6 +50,7 @@
                     </h:selectOneMenu>
                     <h:commandButton value="#{msg.add}" action="#{personBean.addMovie(personBean.movieToAdd)}"/>
                 </h:form>
+                <h:button value="#{msg.home}" outcome="/index.xhtml?faces-redirect=true"/>
             </ui:define>
         </ui:composition>
     </h:body>
